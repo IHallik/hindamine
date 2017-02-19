@@ -15,10 +15,17 @@
 
       <div class="messages">
         <ul id="data"></ul>
-        <script>getMesages();</script>
+        <script>getMessages();</script>
       </div>
+
       <div class="send">
-        
+        <form class="sendData" onSubmit=sendMessage()>
+          Email:
+              <input type="email" id="email"><br>
+          Message:
+            <input type="text" id="message"><br>
+        <input type="submit" name="submit" value="Submit" method="post">
+        </form>
       </div>
     </div>
     <footer>
