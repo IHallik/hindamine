@@ -34,7 +34,7 @@ if ($num_of_rows) {
 
   // execute query
   $stmt->execute();
-  $id = mysql_insert_id();
+  $id = mysqli_insert_id($mysqli);
 
   // close statement
   $stmt->close();
