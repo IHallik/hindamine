@@ -1,4 +1,31 @@
-function getMessages(){
+function getMessages(timestamp){
+  var queryString = {'timestamp' : timestamp};
+
+  $.ajax(
+      {
+          type: 'GET',
+          url: 'request.php',
+          data: queryString,
+          success: function(data){
+              // put result data into "obj"
+              var obj = data;
+              //console.log(obj);
+              var arr = obj.messages;
+              //console.log(arr);
+              console.log(arr.length);
+              // display the data
+              var out = "";
+              for (var i = 0; i < arr.length; i++){
+                  console.log("this is test");
+                  out += '<li>' + arr[i].message + '-' + arr[i].email_address +  '</li> ';
+              }
+              document.getElementById("data").innerHTML = out;
+              // requcive call with upodated timestamp
+              getMessages(obj.timestamp);
+          }
+      }
+  );
+  /*
   var xmlhttp = new XMLHttpRequest();
   var request_url = "messages.json";
 
@@ -18,7 +45,7 @@ function getMessages(){
           out += '<li>' + arr[i].message + '-' + arr[i].email_address +  '</li> ';
       }
       document.getElementById("data").innerHTML = out;
-  }
+  }*/
 }
 var xmlhttp;
 function sendMessage() {
@@ -45,3 +72,8 @@ function respond() {
         document.getElementById('result').innerHTML = xmlhttp.responseText;
     }
 }
+
+// initialize jQuery
+$(function() {
+    getMessages();
+});
