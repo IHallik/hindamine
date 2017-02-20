@@ -8,20 +8,15 @@ function getMessages(timestamp){
           data: queryString,
           success: function(data){
               // put result data into "obj"
-              var obj = data;
-              //console.log(obj);
-              var arr = obj.messages;
-              //console.log(arr);
-              console.log(arr.length);
+              var arr = data.messages;
               // display the data
               var out = "";
               for (var i = 0; i < arr.length; i++){
-                  console.log("this is test");
                   out += '<li>' + arr[i].message + '-' + arr[i].email_address +  '</li> ';
               }
               document.getElementById("data").innerHTML = out;
               // requcive call with upodated timestamp
-              getMessages(obj.timestamp);
+              getMessages(data.timestamp);
           }
       }
   );
