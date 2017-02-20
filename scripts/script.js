@@ -1,6 +1,6 @@
 function getMessages(){
   var xmlhttp = new XMLHttpRequest();
-  var request_url = "request.php";
+  var request_url = "messages.json";
 
   xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
