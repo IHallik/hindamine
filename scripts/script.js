@@ -6,6 +6,7 @@ function getMessages(timestamp){
           type: 'GET',
           url: 'request.php',
           data: queryString,
+          contentType: "application/json;charset=utf-8",
           success: function(data){
               // put result data into "obj"
               var arr = data.messages;
@@ -23,29 +24,24 @@ function getMessages(timestamp){
 }
 var xmlhttp;
 function sendMessage() {
-
-    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp = new XMLHttpRequest();
-    }
-    else {// code for IE6, IE5
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
     var values =  {};
     values.email = document.getElementById("email").value;
     values.message = document.getElementById("message").value;
-
     var json = JSON.stringify(values);
 
-    xmlhttp.onreadystatechange = respond;
-    xmlhttp.open("POST", "send.php", true);
-    xmlhttp.send(json);
-
-}
-function respond() {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        document.getElementById('result').innerHTML = xmlhttp.responseText;
-    }
-}
+    $.ajax({
+            type: "POST",
+            url: "send.php",
+            data: json,
+            dataType:'json',
+            success: function() {
+                console.log("success");
+            },
+            error: function(jqXHR) {
+                console.log("errorThrown");
+                console.log(jqXHR);
+            }
+        })}
 
 // initialize jQuery
 $(function() {

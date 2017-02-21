@@ -20,4 +20,5 @@ mysqli_close($mysqli);
 
 // make new JSON
 include "makejson.php";
+http_response_code(200);
 ?>
