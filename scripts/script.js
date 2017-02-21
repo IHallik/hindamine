@@ -1,9 +1,8 @@
 function getMessages(timestamp){
   var queryString = {'timestamp' : timestamp};
 
-  $.ajax(
-      {
-          type: 'GET',
+  $.ajax({
+          type: 'get',
           url: 'request.php',
           data: queryString,
           contentType: "application/json;charset=utf-8",
@@ -22,26 +21,25 @@ function getMessages(timestamp){
       }
   );
 }
-var xmlhttp;
 function sendMessage() {
     var values =  {};
     values.email = document.getElementById("email").value;
     values.message = document.getElementById("message").value;
     var json = JSON.stringify(values);
-
     $.ajax({
-            type: "POST",
+            type: "post",
             url: "send.php",
             data: json,
-            dataType:'json',
-            success: function() {
-                console.log("success");
+            dataType: "json",
+            success: function(data) {
+                document.getElementById("messageForm").reset();
             },
             error: function(jqXHR) {
-                console.log("errorThrown");
                 console.log(jqXHR);
+                //TODO add error message to the screen
             }
-        })}
+        });
+      }
 
 // initialize jQuery
 $(function() {

@@ -17,12 +17,12 @@
         <ul id="data"></ul>
       </div>
       <div class="send">
-        <form class="sendData" onSubmit=sendMessage()>
+        <form class="sendData" id="messageForm">
           Email:
               <input type="email" id="email"><br>
           Message:
             <input type="text" id="message"><br>
-        <input type="submit">
+        <button type='button' onclick="sendMessage()">submit</button>
         </form>
       </div>
     </div>
