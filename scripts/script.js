@@ -12,7 +12,7 @@ function getMessages(timestamp){
               // display the data
               var out = "";
               for (var i = 0; i < arr.length; i++){
-                  out += '<li>' + arr[i].message + '-' + arr[i].email_address +  '</li> ';
+                  out += '<li>' + arr[i].message.replace(/</g, "&lt;").replace(/>/g, "&gt;") + '-' + arr[i].email_address +  '</li> ';
               }
               document.getElementById("data").innerHTML = out;
               // requcive call with upodated timestamp
