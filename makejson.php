@@ -1,4 +1,8 @@
 <?php
+$localInit = 'localinit.php';
+if (file_exists($localInit)) {//only runs in localhost
+  include $localInit;
+}
 $mysqli = new mysqli(getenv("DB_URL"),getenv("DB_USER"), getenv("DB_PASS"), "heroku_9f3983ebc41e915");
 if ($mysqli->connect_errno) {
   $messages = array(

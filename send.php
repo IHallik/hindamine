@@ -1,4 +1,8 @@
 <?php
+$localInit = 'localinit.php';
+if (file_exists($localInit)) {//only runs in localhost
+  include $localInit;
+}
 $str_json = file_get_contents('php://input'); //($_POST doesn't work with JSON)
 $response = json_decode($str_json, true); // decoding received JSON to array
 
