@@ -16,12 +16,17 @@
       <div class="messages">
         <ul id="data"></ul>
       </div>
+      <p class="servermessage" id="servermessage"></p>
       <div class="send">
         <form class="sendData" id="messageForm">
-          Email:
-              <input type="email" id="email"><br>
-          Message:
-            <input type="text" id="message"><br>
+          <p>
+            <label for="email"> Email: </label>
+            <input type="email" name="email" id="email" tabindex="1"/>
+          </p>
+          <p>
+            <label for="message"> Message: </label>
+            <input type="text" name="message" id="message" tabindex="2"/>
+          </p>
         <button type='button' onclick="sendMessage()">submit</button>
         </form>
       </div>

@@ -6,7 +6,7 @@ $response = json_decode($str_json, true); // decoding received JSON to array
 $mysqli = new mysqli(getenv("DB_URL"),getenv("DB_USER"), getenv("DB_PASS"), "heroku_9f3983ebc41e915");
 
 if ($mysqli->connect_errno) {
-    $response_array = array("status" => "couln't connect to DB, try again");
+    $response_array = array("success" => false, "status" => "couln't connect to DB, try again");
 } else {
   $response_array = array("success" => true,"status" => "message added");
   $stmt = $mysqli->prepare("call spAddMessage(?,?);");
@@ -23,8 +23,6 @@ mysqli_close($mysqli);
 // make new JSON
 include "makejson.php";
 
-$response_array = array("status" => "message added");
 header("Content-type: application/json");
 echo json_encode($response_array);
-
 ?>

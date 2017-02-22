@@ -32,11 +32,17 @@ function sendMessage() {
             data: json,
             dataType: "json",
             success: function(data) {
+              if (data.success) {
                 document.getElementById("messageForm").reset();
+                document.getElementById("servermessage").reset();
+              }else {
+                document.getElementById("servermessage").innerHTML = data.status;
+              }
             },
             error: function(jqXHR) {
                 console.log(jqXHR);
                 //TODO add error message to the screen
+                document.getElementById("servermessage").innerHTML = jqXHR.responseText;
             }
         });
       }
