@@ -34,7 +34,7 @@ function sendMessage() {
             success: function(data) {
               if (data.success) {
                 document.getElementById("messageForm").reset();
-                document.getElementById("servermessage").reset();
+                document.getElementById("servermessage").innerHTML ="";
               }else {
                 document.getElementById("servermessage").innerHTML = data.status;
               }
