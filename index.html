@@ -21,14 +21,19 @@
         <form class="sendData" id="messageForm">
           <p>
             <label for="email"> Email: </label>
-            <input type="email" name="email" id="email" tabindex="1"/>
+            <input type="email" name="email" id="form_email" tabindex="1"/>
           </p>
           <p>
             <label for="message"> Message: </label>
-            <input type="text" name="message" id="message" tabindex="2"/>
+            <input type="text" name="message" id="form_message" tabindex="2"/>
           </p>
         <button type='button' onclick="sendMessage()">submit</button>
         </form>
+      </div>
+      <div class="topPoster">
+        <h4>Most posts done by: </h4>
+        <label>Email address:</label> <label id="largest_email"></label> </br>
+        <label>Their posts:</label> <label id="largest_count"></label> </br>
       </div>
     </div>
     <footer>

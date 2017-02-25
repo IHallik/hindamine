@@ -22,12 +22,13 @@ function getMessages(timestamp){
   );
 }
 function toText( html ) {
-    return $( $.parseHTML(html) ).text();
+    return html.replace(/</g, "&lt;").replace(/>/g, "&gt;"); //visualy more interesting for demo
+    //return $( $.parseHTML(html) ).text();
 }
 function sendMessage() {
     var values =  {};
-    values.email = document.getElementById("email").value;
-    values.message = document.getElementById("message").value;
+    values.email = document.getElementById("form_email").value;
+    values.message = document.getElementById("form_message").value;
     var json = JSON.stringify(values);
     $.ajax({
             type: "post",
@@ -49,8 +50,20 @@ function sendMessage() {
             }
         });
       }
-
+function getSpamer(){
+  $.ajax({
+          type: 'get',
+          url: 'mostmessages.php',
+          contentType: "application/json;charset=utf-8",
+          success: function(data){
+              document.getElementById("largest_email").innerHTML = data.email;
+              document.getElementById("largest_count").innerHTML = data.count;
+          }
+      }
+  );
+}
 // initialize jQuery
 $(function() {
     getMessages();
+    getSpamer();
 });
