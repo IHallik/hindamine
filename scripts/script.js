@@ -44,8 +44,6 @@ function sendMessage() {
               }
             },
             error: function(jqXHR) {
-                console.log(jqXHR);
-                //TODO add error message to the screen
                 document.getElementById("servermessage").innerHTML = jqXHR.responseText;
             }
         });

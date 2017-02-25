@@ -3,7 +3,6 @@ $localInit = 'localinit.php';
 if (file_exists($localInit)) {//only runs in localhost
   include $localInit;
 }
-error_reporting(1);
 header('Content-type:application/json;charset=utf-8');
 
 $mysqli = new mysqli(getenv("DB_URL"),getenv("DB_USER"), getenv("DB_PASS"), "heroku_9f3983ebc41e915");
