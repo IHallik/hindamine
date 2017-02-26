@@ -1,0 +1,2 @@
+fail loodud võtte "Rakenduse koodirepositooriumi üles seadmine" 3. nõude jaoks.
+faili looja: Oliver
