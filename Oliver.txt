@@ -1,2 +1,3 @@
-fail loodud võtte "Rakenduse koodirepositooriumi üles seadmine" 3. nõude jaoks.
+fail loodud vï¿½tte "Rakenduse koodirepositooriumi ï¿½les seadmine" 3. nï¿½ude jaoks.
 faili looja: Oliver
+mÃ¤ngime siis seda "mÃ¤ngu" - Innar
