@@ -3,12 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>Hindamine</title>
+	<link type="text/css" rel="stylesheet" href="ref.css"/>
   </head>
   <body>
     <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
     <script src="scripts/script.js"></script>
     <header>
     </header>
+	<ul>
+		<li>aaa
+		</li>
+		<li>aaa
+		</li>
+	</ul>
     <div class="content">
       <h1>Hindamine</h1>
       <h2>Veebirakenduste loomine 2016/17 kevad</h2>
@@ -19,21 +26,41 @@
       <p class="servermessage" id="servermessage"></p>
       <div class="send">
         <form class="sendData" id="messageForm">
+		<table>
+		<tr>
           <p>
-            <label for="email"> Email: </label>
+			<td>
+            <label for="email"> E-mail: </label>
+			</td>
+			<td align="right">
             <input type="email" name="email" id="form_email" tabindex="1"/>
+			</td>
           </p>
+		</tr>
+		<tr>
           <p>
+			<td>
             <label for="message"> Message: </label>
+			</td>
+			<td align="right">
             <input type="text" name="message" id="form_message" tabindex="2"/>
+			</td>
           </p>
-        <button type='button' onclick="sendMessage()">submit</button>
+		</tr>
+		</table>
+        <button type='button' onclick="sendMessage()">SUBMIT</button>
         </form>
       </div>
       <div class="topPoster">
         <h4>Most posts done by: </h4>
-        <label>Email address:</label> <label id="largest_email"></label> </br>
-        <label>Their posts:</label> <label id="largest_count"></label> </br>
+		<table id="topPoster">
+			<tr>
+				<td><label>E-mail address:</label></td> <td><label id="largest_email"></label></td>
+			</tr>
+			<tr>
+				<td><label>Their posts:</label></td> <td><label id="largest_count"></label></td>
+			</td> </br>
+		</table>
       </div>
     </div>
     <footer>

@@ -1,0 +1,18 @@
+body {
+	font-family:Tahoma;
+	margin-left:30px;
+	background-color:#F4FFFF;
+}
+button {
+	width:70px;
+	height:40px;
+	background-color:beige;
+	border-radius:5px;
+}
+ul li {
+	margin-bottom:3px;
+}
+#topPoster {
+	font-weight: bold;
+	font-size:15px;
+}
