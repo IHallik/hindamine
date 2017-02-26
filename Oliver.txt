@@ -1,3 +1,0 @@
-fail loodud v�tte "Rakenduse koodirepositooriumi �les seadmine" 3. n�ude jaoks.
-faili looja: Oliver
-mängime siis seda "mängu" - Innar
