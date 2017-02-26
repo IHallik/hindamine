@@ -1,5 +1,5 @@
 # hindamine
-Veebirakenduste loomine 2016/17 kevad
+Veebirakenduste loomine 2016/2017 kevad
 
 Tiimi liikmed:
 * Mariana Urvik
