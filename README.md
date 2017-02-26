@@ -7,6 +7,7 @@ Tiimi liikmed:
 * Oliver Vinkel
 
 Arendus keskkond: [live](https://hindamine.herokuapp.com/)
+
 Release keskkond: [Release](https://letseattogether.herokuapp.com/)
 
 [Wiki](https://github.com/IHallik/hindamine/wiki)
