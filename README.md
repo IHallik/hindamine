@@ -1,4 +1,4 @@
-# hindamine
+# Sööme koos
 Veebirakenduste loomine 2016/2017 kevad
 
 Tiimi liikmed:
