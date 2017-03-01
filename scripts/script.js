@@ -64,7 +64,7 @@ function initMap(locationId) {
   $.ajax({
           type: 'get',
           data: locationId,
-          url: 'placeholder',
+          url: 'liivi.json',
           contentType: "application/json;charset=utf-8",
           success: function(data){
               // put result data into "obj"
