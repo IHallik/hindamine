@@ -60,6 +60,48 @@ function getSpamer(){
       }
   );
 }
+function initMap(locationId) {
+  $.ajax({
+          type: 'get',
+          data: locationId,
+          url: 'placeholder',
+          contentType: "application/json;charset=utf-8",
+          success: function(data){
+              // put result data into "obj"
+              var location = data;
+              var map = new google.maps.Map(document.getElementById('map'), {
+                center: new google.maps.LatLng(location.lat, location.lng),
+                zoom: 12
+              });
+              var infoWindow = new google.maps.InfoWindow();
+
+              var point = new google.maps.LatLng(
+                  parseFloat(location.lat),
+                  parseFloat(location.lng)
+              );
+              var infowincontent = document.createElement('div');
+              var strong = document.createElement('strong');
+              strong.textContent = location.name;
+              infowincontent.appendChild(strong);
+              infowincontent.appendChild(document.createElement('br'));
+
+              var text = document.createElement('text');
+              text.textContent = location.address;
+              infowincontent.appendChild(text);
+              var icon = {};
+              var marker = new google.maps.Marker({
+                map: map,
+                position: point,
+                label: icon.label
+              });
+              marker.addListener('click', function() {
+                infoWindow.setContent(infowincontent);
+                infoWindow.open(map, marker);
+              });
+          }
+      }
+  );
+}
 // initialize jQuery
 $(function() {
     getMessages();
