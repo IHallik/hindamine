@@ -26,6 +26,7 @@ function toText( html ) {
     //return $( $.parseHTML(html) ).text();
 }
 function sendMessage() {
+    document.getElementById("summit").disabled = true;
     var values =  {};
     values.email = document.getElementById("form_email").value;
     values.message = document.getElementById("form_message").value;
@@ -39,8 +40,10 @@ function sendMessage() {
               if (data.success) {
                 document.getElementById("messageForm").reset();
                 document.getElementById("servermessage").innerHTML ="";
+                document.getElementById("summit").disabled = false;
               }else {
                 document.getElementById("servermessage").innerHTML = data.status;
+                document.getElementById("summit").disabled = false;
               }
             },
             error: function(jqXHR) {
