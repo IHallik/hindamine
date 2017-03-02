@@ -1,64 +1,108 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Sööme koos</title>
-	<link type="text/css" rel="stylesheet" href="ref.css"/>
-  </head>
-  <body>
+    <link type="text/css" rel="stylesheet" href="ref.css" />
+</head>
+
+<body>
     <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
     <script src="scripts/script.js"></script>
     <header>
     </header>
     <div class="content">
-      <h1>Sööme koos</h1>
-      <h2>Veebirakenduste loomine 2016/17 kevad</h2>
+        <h1>Sööme koos</h1>
+        <h2>Veebirakenduste loomine 2016/17 kevad</h2>
 
-      <div class="messages">
-        <ul id="data"></ul>
-      </div>
-      <p class="servermessage" id="servermessage"></p>
-      <div class="send">
-        <form class="sendData" id="messageForm">
-		<table>
-		<tr>
-          <p>
-			<td>
-            <label for="email"> E-mail: </label>
-			</td>
-			<td align="right">
-            <input type="email" name="email" id="form_email" tabindex="1"/>
-			</td>
-          </p>
-		</tr>
-		<tr>
-          <p>
-			<td>
-            <label for="message"> Message: </label>
-			</td>
-			<td align="right">
-            <input type="text" name="message" id="form_message" tabindex="2"/>
-			</td>
-          </p>
-		</tr>
-		</table>
-        <button type='button' id="summit" onclick="sendMessage()">SUBMIT</button>
-        </form>
-      </div>
-      <div class="topPoster">
-        <h4>Most posts done by: </h4>
-		<table id="topPoster">
-			<tr>
-				<td><label>E-mail address:</label></td> <td><label id="largest_email"></label></td>
-			</tr>
-			<tr>
-				<td><label>Their posts:</label></td> <td><label id="largest_count"></label></td>
-			</td> </br>
-		</table>
-      </div>
+        <div class="messages">
+            <ul id="data"></ul>
+        </div>
+        <p class="servermessage" id="servermessage"></p>
+        <div class="send">
+            <form class="sendData" id="messageForm">
+                <table>
+                  <tr>
+                      <p>
+                          <td>
+                              <label for="location"> Location: </label>
+                          </td>
+                          <td>
+                              <input type="text" name="location" id="form_message" tabindex="1" />
+                          </td>
+                      </p>
+                  </tr>
+                    <tr>
+                        <p>
+                            <td>
+                                <label for="date"> Date: </label>
+                            </td>
+                            <td>
+                                <input type="date" name="date" id="form_date" tabindex="2" />
+                            </td>
+                        </p>
+                    </tr>
+                    <tr>
+                        <p>
+                            <td>
+                                <label for="time"> Time: </label>
+                            </td>
+                            <td>
+                                <input type="time" name="time" id="form_time" tabindex="3" />
+                            </td>
+                        </p>
+                    </tr>
+                    <tr>
+                        <p>
+                            <td>
+                                <label for="count"> Count: </label>
+                            </td>
+                            <td>
+                                <input type="text" name="count" id="form_count" tabindex="4" />
+                            </td>
+                        </p>
+                    </tr>
+                    <tr>
+                        <p>
+                            <td>
+                                <label for="email"> E-mail: </label>
+                            </td>
+                            <td>
+                                <input type="email" name="email" id="form_email" tabindex="5" />
+                            </td>
+                        </p>
+                    </tr>
+                </table>
+                <button type='button' id="summit" onclick="sendMessage()">SUBMIT</button>
+            </form>
+        </div>
+        <div class="topPoster">
+            <h4>Most posts done by: </h4>
+            <table id="topPoster">
+                <tr>
+                    <td>
+                        <label>E-mail address:</label>
+                    </td>
+                    <td>
+                        <label id="largest_email"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Their posts:</label>
+                    </td>
+                    <td>
+                        <label id="largest_count"></label>
+                    </td>
+                    </td>
+                    </br>
+            </table>
+        </div>
     </div>
     <footer>
 
     </footer>
-  </body>
+</body>
+
 </html>
