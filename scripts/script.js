@@ -30,10 +30,15 @@ function sendMessage() {
     var values =  {};
     values.email = document.getElementById("form_email").value;
     values.message = document.getElementById("form_message").value;
+    values.event_time = document.getElementById("form_date").value + " " + document.getElementById("form_time").value;// go to yyyy-mm-dd hh:mm:ss
+    values.people_count = document.getElementById("form_count").value;
+    values.location = document.getElementById("form_location").value;
+    console.log(values.event_time);
+
     var json = JSON.stringify(values);
     $.ajax({
             type: "post",
-            url: "send.php",
+            url: "send_new.php",
             data: json,
             dataType: "json",
             success: function(data) {
@@ -124,6 +129,26 @@ function initForm(){
 
   var today = year + "-" + month + "-" + day;
   document.getElementById('form_date').value = today;
+
+  var select = document.getElementById("form_location");
+  $.ajax({
+          type: 'get',
+          url: 'liivi.json',
+          contentType: "application/json;charset=utf-8",
+          success: function(data){
+            for (var i = 0; i < data.length; i++){
+               var element = data[i];
+               var opt = document.createElement("option");
+               opt.value= element.id;
+               opt.innerHTML = element.name; // whatever property it has
+
+               // then append it to the select element
+               select.appendChild(opt);
+            }
+          }
+      }
+  );
+
 }
 // initialize jQuery
 $(function() {

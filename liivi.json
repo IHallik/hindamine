@@ -1,1 +1,5 @@
-{"id":"0","name":"Liivi kohvik","address":"Juhan Liivi 2, 50409 Tartu","lat":"58.378256","lng":"26.715139","type":"kohvik"}
+[
+  {"id":"0","name":"Liivi kohvik","address":"Juhan Liivi 2, 50409 Tartu","lat":"58.378256","lng":"26.715139","type":"kohvik"},
+  {"id":"1","name":"Test kohvik","address":"Juhan Liivi 2, 50409 Tartu","lat":"58.378257","lng":"26.715140","type":"kohvik"},
+  {"id":"2","name":"Test kohvik 2","address":"Juhan Liivi 2, 50409 Tartu","lat":"58.378250","lng":"26.715145","type":"kohvik"}
+]
