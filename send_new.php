@@ -14,6 +14,7 @@ if ($mysqli->connect_errno) {
 } else {
   $response_array = array("success" => true,"status" => "message added");
   $stmt = $mysqli->prepare("call spAddPost(?, ?, ?, ?, ?, ?);");
+  $response["public"] = 1; // always public untill accounts
   // filling statement
   $stmt->bind_param("ssiiis",$response["email"],$response["message"],$response["location"],$response["people_count"],$response["public"],$response["event_time"]);
   // execute query
@@ -25,7 +26,7 @@ if ($mysqli->connect_errno) {
 mysqli_close($mysqli);
 
 // make new JSON
-include "makejson.php";
+include "makejson_new.php";
 
 header("Content-type: application/json");
 echo json_encode($response_array);

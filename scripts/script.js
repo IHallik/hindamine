@@ -3,7 +3,7 @@ function getMessages(timestamp){
 
   $.ajax({
           type: 'get',
-          url: 'request.php',
+          url: 'request_new.php',
           data: queryString,
           contentType: "application/json;charset=utf-8",
           success: function(data){
@@ -12,7 +12,7 @@ function getMessages(timestamp){
               // display the data
               var out = "";
               for (var i = 0; i < arr.length; i++){
-                  out += '<li>' + toText(arr[i].message) + '-' + toText(arr[i].email_address) + '</li> ';
+                  out += '<li>' +JSON.stringify(arr[i])  + '</li> ';
               }
               document.getElementById("data").innerHTML = out;
               // requcive call with upodated timestamp
@@ -22,18 +22,17 @@ function getMessages(timestamp){
   );
 }
 function toText( html ) {
-    return html.replace(/</g, "&lt;").replace(/>/g, "&gt;"); //visualy more interesting for demo
-    //return $( $.parseHTML(html) ).text();
+    //return html.replace(/</g, "&lt;").replace(/>/g, "&gt;"); //visualy more interesting for demo
+    return $( $.parseHTML(html) ).text();
 }
 function sendMessage() {
     document.getElementById("summit").disabled = true;
     var values =  {};
     values.email = document.getElementById("form_email").value;
     values.message = document.getElementById("form_message").value;
-    values.event_time = document.getElementById("form_date").value + " " + document.getElementById("form_time").value;// go to yyyy-mm-dd hh:mm:ss
+    values.event_time = document.getElementById("form_date").value + " " + document.getElementById("form_time").value;
     values.people_count = document.getElementById("form_count").value;
     values.location = document.getElementById("form_location").value;
-    console.log(values.event_time);
 
     var json = JSON.stringify(values);
     $.ajax({
@@ -44,6 +43,7 @@ function sendMessage() {
             success: function(data) {
               if (data.success) {
                 document.getElementById("messageForm").reset();
+                initForm();
                 document.getElementById("servermessage").innerHTML ="";
                 document.getElementById("summit").disabled = false;
               }else {
@@ -133,7 +133,7 @@ function initForm(){
   var select = document.getElementById("form_location");
   $.ajax({
           type: 'get',
-          url: 'liivi.json',
+          url: 'locations.php',
           contentType: "application/json;charset=utf-8",
           success: function(data){
             for (var i = 0; i < data.length; i++){
