@@ -12,7 +12,7 @@ function getMessages(timestamp){
               // display the data
               var out = "";
               for (var i = 0; i < arr.length; i++){
-                  out += '<li>' +JSON.stringify(arr[i])  + '</li> ';
+                  out += '<li>' +JSON.stringify(arr[i]) + "<a href=" + arr[i].idpost + ">Continue</a>"  + '</li>';
               }
               document.getElementById("data").innerHTML = out;
               // requcive call with upodated timestamp
@@ -152,7 +152,9 @@ function initForm(){
 }
 // initialize jQuery
 $(function() {
-    getMessages();
-    getSpamer();
-    initForm();
+  $("#header").load("header.html");
+  $("#footer").load("footer.html");
+  getMessages();
+  getSpamer();
+  initForm();
 });
