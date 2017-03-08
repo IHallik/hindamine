@@ -12,11 +12,36 @@ function getMessages(timestamp){
               // display the data
               var out = "";
               for (var i = 0; i < arr.length; i++){
-                  out += '<li>' +JSON.stringify(arr[i]) + "<a href=" + arr[i].idpost + ">Continue</a>"  + '</li>';
+                  out += '<li>' +JSON.stringify(arr[i]) + "<a href=/post?id=" + arr[i].idpost + ">Continue</a>"  + '</li>';
               }
               document.getElementById("data").innerHTML = out;
               // requcive call with upodated timestamp
               getMessages(data.timestamp);
+          }
+      }
+  );
+}
+function getMessage(id){
+var queryString = {'timestamp' : 0};
+  $.ajax({
+          type: 'get',
+          url: 'request_new.php',
+          data: queryString,
+          contentType: "application/json;charset=utf-8",
+          success: function(data){
+              // put result data into "obj"
+              var arr = data.messages;
+              // display the data
+              var out = "";
+              for (var i = 0; i < arr.length; i++){
+                if (arr[i].idpost == id) {
+                    out += JSON.stringify(arr[i]);
+                    initMap(arr[i].location_id);
+                  break;
+                }
+              }
+              document.getElementById("test").innerHTML = out;
+
           }
       }
   );
@@ -55,7 +80,7 @@ function sendMessage() {
                 document.getElementById("servermessage").innerHTML = jqXHR.responseText;
             }
         });
-      }
+}
 function getSpamer(){
   $.ajax({
           type: 'get',
@@ -80,35 +105,40 @@ function initMap(locationId) {
                 console.log(data);
                 var location = data.location;
                 console.log(location);
-                var map = new google.maps.Map(document.getElementById('map'), {
-                  center: new google.maps.LatLng(location.lat, location.lng),
-                  zoom: 16
-                });
-                var infoWindow = new google.maps.InfoWindow();
+                if (location === null) {
+                  console.log("WTF IS GOING ON");//initMap gets called 2 times for some reason
+                } else{
+                  var map = new google.maps.Map(document.getElementById('map'), {
+                    center: new google.maps.LatLng(location.lat, location.lng),
+                    zoom: 16
+                  });
+                  var infoWindow = new google.maps.InfoWindow();
 
-                var point = new google.maps.LatLng(
-                    parseFloat(location.lat),
-                    parseFloat(location.lng)
-                );
-                var infowincontent = document.createElement('div');
-                var strong = document.createElement('strong');
-                strong.textContent = location.name;
-                infowincontent.appendChild(strong);
-                infowincontent.appendChild(document.createElement('br'));
+                  var point = new google.maps.LatLng(
+                      parseFloat(location.lat),
+                      parseFloat(location.lng)
+                  );
+                  var infowincontent = document.createElement('div');
+                  var strong = document.createElement('strong');
+                  strong.textContent = location.name;
+                  infowincontent.appendChild(strong);
+                  infowincontent.appendChild(document.createElement('br'));
 
-                var text = document.createElement('text');
-                text.textContent = location.address;
-                infowincontent.appendChild(text);
-                var icon = {};
-                var marker = new google.maps.Marker({
-                  map: map,
-                  position: point,
-                  label: icon.label
-                });
-                marker.addListener('click', function() {
-                  infoWindow.setContent(infowincontent);
-                  infoWindow.open(map, marker);
-                });
+                  var text = document.createElement('text');
+                  text.textContent = location.address;
+                  infowincontent.appendChild(text);
+                  var icon = {};
+                  var marker = new google.maps.Marker({
+                    map: map,
+                    position: point,
+                    label: icon.label
+                  });
+
+                  marker.addListener('click', function() {
+                    infoWindow.setContent(infowincontent);
+                    infoWindow.open(map, marker);
+                  });
+              }
               } else {
                   // think how to handle it
               }
@@ -139,7 +169,7 @@ function initForm(){
             for (var i = 0; i < data.length; i++){
                var element = data[i];
                var opt = document.createElement("option");
-               opt.value= element.id;
+               opt.value= element.idlocation;
                opt.innerHTML = element.name; // whatever property it has
 
                // then append it to the select element
@@ -148,13 +178,32 @@ function initForm(){
           }
       }
   );
+}
 
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
 }
 // initialize jQuery
 $(function() {
   $("#header").load("header.html");
   $("#footer").load("footer.html");
-  getMessages();
-  getSpamer();
-  initForm();
+  switch (window.location.pathname) {
+    case "/":
+      getMessages();
+      break;
+
+    case "/post":
+    var id = getURLParameter("id");
+      getMessage(id);
+      break;
+
+    case "/new":
+      initForm();
+      break;
+
+    default:
+      console.log("you are lost");
+  }
+
+
 });

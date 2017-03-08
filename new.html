@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Sööme koos</title>
+    <link type="text/css" rel="stylesheet" href="ref.css" />
+</head>
+
+<body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="scripts/script.js"></script>
+    <header id="header"></header>
+    <div class="content">
+      <p class="servermessage" id="servermessage"></p>
+      <div class="send">
+          <form class="sendData" id="messageForm">
+              <table>
+                <tr>
+                    <p>
+                        <td>
+                            <label for="location"> Location: </label>
+                        </td>
+                        <td>
+                            <select id="form_location"  tabindex="1" name="locationlist">
+                            </select>
+                        </td>
+                    </p>
+                </tr>
+                  <tr>
+                      <p>
+                          <td>
+                              <label for="date"> Date: </label>
+                          </td>
+                          <td>
+                              <input type="date" name="date" id="form_date" tabindex="2" />
+                          </td>
+                      </p>
+                  </tr>
+                  <tr>
+                      <p>
+                          <td>
+                              <label for="time"> Time: </label>
+                          </td>
+                          <td>
+                              <input type="time" name="time" id="form_time" tabindex="3" />
+                          </td>
+                      </p>
+                  </tr>
+                  <tr>
+                      <p>
+                          <td>
+                              <label for="count"> Count: </label>
+                          </td>
+                          <td>
+                              <input type="text" name="count" id="form_count" tabindex="4" />
+                          </td>
+                      </p>
+                  </tr>
+                  <tr>
+                      <p>
+                          <td>
+                              <label for="email"> E-mail: </label>
+                          </td>
+                          <td>
+                              <input type="email" name="email" id="form_email" tabindex="5" />
+                          </td>
+                      </p>
+                  </tr>
+                  <tr>
+                      <p>
+                          <td>
+                              <label for="message"> Info: </label>
+                          </td>
+                          <td>
+                              <input type="text" name="message" id="form_message" tabindex="6" />
+                          </td>
+                      </p>
+                  </tr>
+              </table>
+              <button type='button' id="summit" onclick="sendMessage()">SUBMIT</button>
+          </form>
+      </div>
+      </div>
+  </div>
+    </div>
+    <footer id="footer"></footer>
+</body>
+
+</html>
