@@ -12,7 +12,7 @@ function getMessages(timestamp){
               // display the data
               var out = "";
               for (var i = 0; i < arr.length; i++){
-                  out += '<li>' +JSON.stringify(arr[i]) + "<a href=/post?id=" + arr[i].idpost + ">Continue</a>"  + '</li>';
+                  out += '<li>' +JSON.stringify(arr[i]) + "<a href=/post.html?id=" + arr[i].idpost + ">Continue</a>"  + '</li>';
               }
               document.getElementById("data").innerHTML = out;
               // requcive call with upodated timestamp
@@ -22,7 +22,7 @@ function getMessages(timestamp){
   );
 }
 function getMessage(id){
-var queryString = {'timestamp' : 0};
+  var queryString = {'timestamp' : 0};
   $.ajax({
           type: 'get',
           url: 'request_new.php',
@@ -33,10 +33,12 @@ var queryString = {'timestamp' : 0};
               var arr = data.messages;
               // display the data
               var out = "";
+
               for (var i = 0; i < arr.length; i++){
                 if (arr[i].idpost == id) {
-                    out += JSON.stringify(arr[i]);
-                    initMap(arr[i].location_id);
+                  console.log(arr[i]);
+                  out += JSON.stringify(arr[i]);
+                  initMap(arr[i].location_id);
                   break;
                 }
               }
@@ -94,6 +96,8 @@ function getSpamer(){
   );
 }
 function initMap(locationId) {
+  console.log("-----------");
+  console.log(locationId);
   $.ajax({
           type: 'get',
           url: 'getLocation.php',
@@ -192,12 +196,12 @@ $(function() {
       getMessages();
       break;
 
-    case "/post":
+    case "/post.html":
     var id = getURLParameter("id");
       getMessage(id);
       break;
 
-    case "/new":
+    case "/new.html":
       initForm();
       break;
 
