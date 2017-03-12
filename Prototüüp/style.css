@@ -3,7 +3,8 @@ body{
     padding: 0;
     font-family: serif;
     color: darkgray;
-    background: #f3f3f3;
+    background-image: url("firey.jpg");
+	
 }
 
 
@@ -20,6 +21,12 @@ h2{
     max-width: 960px;
     width: 96%;
     margin: auto;
+}
+
+.aken {
+	border-radius:2px;
+	width: 753px; /*skaleerida*/ 
+	height: 400px;
 }
 
 header{
@@ -52,11 +59,32 @@ ul{
 }
 ul li{
     display: grid;
-    padding: 5px 20px;
-    margin-bottom: 10px;
+    padding-bottom: 5px;
     line-height: normal;
     font-style: italic;
 }
+
 a:link{
     text-decoration: none;
 }
+
+.navigatsiooninupud {
+	background-color:rgba(0, 0, 0, 0.5);
+    display:inherit;
+	border-radius:2px;
+	font-size: 17px;
+	font-family: Tahoma;
+	font-style: normal;
+	padding-top: 5px;
+	padding-bottom:5px;
+	padding-left:2px;
+	padding-right:2px;
+	color:white;
+}
+
+.navigatsiooninupud:hover {
+	background-color:rgba(25, 25, 25, 0.5);
+	font-size:18px;
+	
+}	
+	
