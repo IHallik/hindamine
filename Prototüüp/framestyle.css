@@ -1,10 +1,14 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,400,400);
 body{
     margin: 0;
     padding: 0;
-    font-family: serif;	
+    font-family: Montserrat;	
 	background-color:rgba(0, 0, 0, 0.5);
 	color:white;
 	padding:20px;
+}
+html {
+    font-family: Montserrat;
 }
 
 h1{
@@ -27,4 +31,34 @@ ul li{
 }
 a:link{
     text-decoration: none;
+}
+
+.soogikoht img {
+    width:350px;
+    padding-right:5px;
+    max-height: 210px;
+}
+.soogikoht h2 {
+    max-width: 350px;
+}
+.soogikoht {
+    float:left;
+    padding-right: 5px;
+}
+.ankeet input{
+    width:180px;
+    padding: 10px;
+    margin:2px;
+    background-color:rgba(25, 25, 25, 0.5);
+    color:white;
+    border-radius: 5px;
+} 
+.ankeet select {
+    width:204px;
+    padding:10px;
+    margin:2px;
+    background-color:rgba(25, 25, 25, 0.5);
+    color:white;
+    border-radius: 5px;
+    
 }

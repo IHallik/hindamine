@@ -7,14 +7,30 @@
 </head>
     <body>
 		<form>
-			<br>Söögikoht:
-			<input type="text" name="koht">
-			<br>Toimumiskuupäev:
-			<input type="date" name="kp">
-			<br>Kellaaeg:
-			<input type="time" name="kell">
-			<br>Osalejate arv:
-			<input type="text" name="osalejaid">
+            <table class="ankeet">
+                <tr>
+                    <td>Söögikoht</td>
+                    <td><select>
+                      <option value="verner">Verner</option>
+                      <option value="wilde">Wilde</option>
+                      <option value="vapiano">Vapiano</option>
+                      <option value="meatmarket">Meat Market</option>
+                      <option value="hotpot">Hot Pot</option>
+                      <option value="polpo">Polpo</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                <td>Toimumiskuupäev</td>
+                    <td> <input type="date" name="kp"></td>
+                </tr>
+                <tr>
+                <td>Kellaaeg</td>
+                <td><input type="time" name="kell"></td></tr>
+                <tr>
+                <td>Osalejate arv</td>
+                <td>                <input type="text" name="osalejaid"></td></tr>
+            </table>
 		</form>
     </body>
 </html>
