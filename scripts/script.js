@@ -32,19 +32,17 @@ function getMessage(id){
               // put result data into "obj"
               var arr = data.messages;
               // display the data
-              var post;
+              var out = "";
 
               for (var i = 0; i < arr.length; i++){
                 if (arr[i].idpost == id) {
                   console.log(arr[i]);
-                  post =arr[i];
+                  out += JSON.stringify(arr[i]);
                   initMap(arr[i].location_id);
                   break;
                 }
               }
-              document.getElementById("post_count").innerHTML = post.people;
-              document.getElementById("post_time").innerHTML = post.eventtime;
-              document.getElementById("post_info").innerHTML = post.info;
+              document.getElementById("test").innerHTML = out;
 
           }
       }
