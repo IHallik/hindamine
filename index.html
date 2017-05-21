@@ -1,27 +1,22 @@
-<html oncontextmenu="return false">
+<!DOCTYPE html>
+<html>
+
 <head>
-    <title>Login</title>
-    <link rel="stylesheet" href="style.css">
     <meta charset="utf-8">
+    <title>Sööme koos</title>
+    <link type="text/css" rel="stylesheet" href="ref.css" />
 </head>
 
 <body>
-    <div class = "header">
+    <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="scripts/script.js"></script>
+    <header id="header"></header>
+    <div class="content">
+        <div class="messages">
+            <ul id="data"></ul>
+        </div>
     </div>
-    <div class = "login">
-
-    <form action="" method="post">
-        <h1 class="hiider">Sööme koos!</h1>
-        <input type = "text" name = "kasutajanimi" placeholder="kasutajanimi" onfocus="this.placeholder = ''" onblur="this.placeholder = 'kasutajanimi'"><br>
-        <br><input type = "password" name = "parool" placeholder="parool" onfocus="this.placeholder = ''" onblur="this.placeholder = 'parool'"><br><br>
-        
-
-        <input  type="submit" name="submit" value = "SISENE">   
-        <!--HYPERLINK-->
-        <a href="main.html">SKIP</a>
-    </form>
-        <div class="registreerumine"><a href="">Registreeru kasutajaks</a></div>
-    </div>
-    
+    <footer id="footer"></footer>
 </body>
+
 </html>

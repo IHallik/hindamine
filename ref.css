@@ -1,7 +1,7 @@
 body {
 	font-family:Tahoma;
 	margin-left:30px;
-	background-color:#F4FFFF;
+	background-color:#F4F4F4;
 }
 button {
 	width:70px;
@@ -15,4 +15,26 @@ ul li {
 #topPoster {
 	font-weight: bold;
 	font-size:15px;
+}
+.message-container{
+	border-radius: 20px;
+	border: 5px solid #BEEEEF;
+	padding: 20px;
+}
+.message-container span a{
+	padding: 20px;
+}
+#header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#header li {
+    float: left;
+}
+
+#header li a {
+    display: block;
+    padding: 8px;
 }

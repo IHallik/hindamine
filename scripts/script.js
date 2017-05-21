@@ -12,7 +12,13 @@ function getMessages(timestamp){
               // display the data
               var out = "";
               for (var i = 0; i < arr.length; i++){
-                  out += '<li>' +JSON.stringify(arr[i]) + "<a href=/post.html?id=" + arr[i].idpost + ">Continue</a>"  + '</li>';
+                  out +="<div class=\"message-container\">" +
+                          "<span id=\"time\">" + toText(arr[i].eventtime) + "</span>   " +
+                          "<span id=\"location\">" + toText(arr[i].location_name) + "-" + arr[i].location_address + "</span><br>" +
+                          "<span id=\"info\">" + toText(arr[i].info) + "</span><br>"  +
+                          "<span id=\"Email\">"+ toText(arr[i].email_address) +"</span><br>"+
+                          "<a href=/post.html?id=" + toText(arr[i].idpost) + ">Continue</a>"  +
+                        "</div>" ;
               }
               document.getElementById("data").innerHTML = out;
               // requcive call with upodated timestamp
@@ -32,18 +38,19 @@ function getMessage(id){
               // put result data into "obj"
               var arr = data.messages;
               // display the data
-              var out = "";
+              var post;
 
               for (var i = 0; i < arr.length; i++){
                 if (arr[i].idpost == id) {
                   console.log(arr[i]);
-                  out += JSON.stringify(arr[i]);
+                  post =arr[i];
                   initMap(arr[i].location_id);
                   break;
                 }
               }
-              document.getElementById("test").innerHTML = out;
-
+              document.getElementById("post_count").innerHTML = toText(post.people);
+              document.getElementById("post_time").innerHTML = toText(post.eventtime);
+              document.getElementById("post_info").innerHTML = toText(post.info);
           }
       }
   );
@@ -55,33 +62,68 @@ function toText( html ) {
 function sendMessage() {
     document.getElementById("summit").disabled = true;
     var values =  {};
-    values.email = document.getElementById("form_email").value;
-    values.message = document.getElementById("form_message").value;
-    values.event_time = document.getElementById("form_date").value + " " + document.getElementById("form_time").value;
-    values.people_count = document.getElementById("form_count").value;
-    values.location = document.getElementById("form_location").value;
+    var send = true;
 
-    var json = JSON.stringify(values);
-    $.ajax({
-            type: "post",
-            url: "send_new.php",
-            data: json,
-            dataType: "json",
-            success: function(data) {
-              if (data.success) {
-                document.getElementById("messageForm").reset();
-                initForm();
-                document.getElementById("servermessage").innerHTML ="";
-                document.getElementById("summit").disabled = false;
-              }else {
-                document.getElementById("servermessage").innerHTML = data.status;
-                document.getElementById("summit").disabled = false;
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (!(document.getElementById("form_email").value.match(re))) {
+      document.getElementById("form_email_error").innerHTML = "Enter email an address.";
+      send = false;
+    }else {
+      values.email = document.getElementById("form_email").value;
+      document.getElementById("form_email_error").innerHTML = "";
+    }
+
+    if (document.getElementById("form_message").value === "") {
+      document.getElementById("form_message_error").innerHTML = "Enter some information about the event.";
+      send = false;
+    }else {
+      values.message = document.getElementById("form_message").value;
+      document.getElementById("form_message_error").innerHTML = "";
+    }
+
+    values.event_time = document.getElementById("form_date").value + " " + document.getElementById("form_time").value;
+
+    if (document.getElementById("form_count").value === "") {
+      document.getElementById("form_count_error").innerHTML = "Specify how many peopel can join.";
+      send = false;
+    }else {
+      values.people_count = document.getElementById("form_count").value;
+      document.getElementById("form_count_error").innerHTML = "";
+    }
+
+    if (document.getElementById("form_location").value == -1) {
+      document.getElementById("form_location_error").innerHTML = "Select a location.";
+      send = false;
+    }else {
+      values.location = document.getElementById("form_location").value;
+      document.getElementById("form_location_error").innerHTML = "";
+    }
+
+    if (send) {
+      var json = JSON.stringify(values);
+      $.ajax({
+              type: "post",
+              url: "send_new.php",
+              data: json,
+              dataType: "json",
+              success: function(data) {
+                if (data.success) {
+                  document.getElementById("messageForm").reset();
+                  initForm();
+                  document.getElementById("servermessage").innerHTML ="";
+                  document.getElementById("summit").disabled = false;
+                }else {
+                  document.getElementById("servermessage").innerHTML = data.status;
+                  document.getElementById("summit").disabled = false;
+                }
+              },
+              error: function(jqXHR) {
+                  document.getElementById("servermessage").innerHTML = jqXHR.responseText;
               }
-            },
-            error: function(jqXHR) {
-                document.getElementById("servermessage").innerHTML = jqXHR.responseText;
-            }
-        });
+          });
+      }
+    document.getElementById("summit").disabled = false;
 }
 function getSpamer(){
   $.ajax({
@@ -165,6 +207,11 @@ function initForm(){
   document.getElementById('form_date').value = today;
 
   var select = document.getElementById("form_location");
+  var opt = document.createElement("option");
+
+  opt.value= -1;
+  opt.innerHTML = "Select location";
+  select.appendChild(opt);
   $.ajax({
           type: 'get',
           url: 'locations.php',
@@ -172,7 +219,7 @@ function initForm(){
           success: function(data){
             for (var i = 0; i < data.length; i++){
                var element = data[i];
-               var opt = document.createElement("option");
+               opt = document.createElement("option");
                opt.value= element.idlocation;
                opt.innerHTML = element.name; // whatever property it has
 

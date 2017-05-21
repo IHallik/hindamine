@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>Sööme koos</title>
@@ -8,7 +7,7 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 30pc;
+        height: 30p
         width: 30pc;
         margin: auto;
       }
@@ -24,8 +23,19 @@
     </script>
     <header id="header"></header>
     <div class="content">
-      <div id="test"></div>
-      <div id="map"></div>
+      <table id="event_info">
+        <tr>
+          <td>Inimeste arv: </td> <td id="post_count"></td>
+        </tr>
+        <tr>
+          <td>Toimub: </td> <td id="post_time"/>
+        </tr>
+        <tr>
+          <td>Info: </td> <td id="post_info"></td>
+        </tr>
+      </table>
+
+      <section id="map"></section>
     </div>
     <footer id="footer"></footer>
 </body>
