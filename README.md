@@ -1,4 +1,4 @@
-# hindamine
+# Sööme koos
 Veebirakenduste loomine 2016/2017 kevad
 
 Tiimi liikmed:
@@ -6,4 +6,8 @@ Tiimi liikmed:
 * Innar Hallik
 * Oliver Vinkel
 
-Testkeskond: [https://hindamine.herokuapp.com/](https://hindamine.herokuapp.com/)
+Arendus keskkond: [live](https://hindamine.herokuapp.com/)
+
+Release keskkond: [Release](https://letseattogether.herokuapp.com/)
+
+[Wiki](https://github.com/IHallik/hindamine/wiki)

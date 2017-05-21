@@ -2,3 +2,5 @@ text.txt
 local_init.php
 messages.json
 localinit.php
+locations.json
+posts.json
