@@ -38,3 +38,8 @@ ul li {
     display: block;
     padding: 8px;
 }
+#map {
+	height: 30p
+	width: 30pc;
+	margin: auto;
+}

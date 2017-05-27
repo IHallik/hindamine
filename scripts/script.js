@@ -42,7 +42,6 @@ function getMessage(id){
 
               for (var i = 0; i < arr.length; i++){
                 if (arr[i].idpost == id) {
-                  console.log(arr[i]);
                   post =arr[i];
                   initMap(arr[i].location_id);
                   break;
@@ -125,21 +124,7 @@ function sendMessage() {
       }
     document.getElementById("summit").disabled = false;
 }
-function getSpamer(){
-  $.ajax({
-          type: 'get',
-          url: 'mostmessages.php',
-          contentType: "application/json;charset=utf-8",
-          success: function(data){
-              document.getElementById("largest_email").innerHTML = data.email;
-              document.getElementById("largest_count").innerHTML = data.count;
-          }
-      }
-  );
-}
 function initMap(locationId) {
-  console.log("-----------");
-  console.log(locationId);
   $.ajax({
           type: 'get',
           url: 'getLocation.php',
@@ -148,11 +133,8 @@ function initMap(locationId) {
           success: function(data){
               if (data.success) {
                 // put result data into "obj"
-                console.log(data);
                 var location = data.location;
-                console.log(location);
                 if (location === null) {
-                  console.log("WTF IS GOING ON");//initMap gets called 2 times for some reason
                 } else{
                   var map = new google.maps.Map(document.getElementById('map'), {
                     center: new google.maps.LatLng(location.lat, location.lng),
@@ -192,6 +174,7 @@ function initMap(locationId) {
           }
       }
   );
+
 }
 function initForm(){
   var date = new Date();
@@ -230,7 +213,6 @@ function initForm(){
       }
   );
 }
-
 function getURLParameter(name) {
   return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
 }
@@ -242,19 +224,14 @@ $(function() {
     case "/":
       getMessages();
       break;
-
     case "/post.html":
     var id = getURLParameter("id");
       getMessage(id);
       break;
-
     case "/new.html":
       initForm();
       break;
-
     default:
       console.log("you are lost");
   }
-
-
 });

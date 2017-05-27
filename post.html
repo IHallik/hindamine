@@ -3,24 +3,12 @@
 <head>
     <meta charset="utf-8">
     <title>Sööme koos</title>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 30p
-        width: 30pc;
-        margin: auto;
-      }
-    </style>
     <link type="text/css" rel="stylesheet" href="ref.css" />
 </head>
-
 <body>
-    <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
-    <script src="scripts/script.js"></script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0xvgiuNtjiei70nUfZCy-BKx5TC-ArXU&callback=initMap">
-    </script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery.min.js" defer></script>
+    <script type="text/javascript" src="scripts/script-min.js" defer></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0xvgiuNtjiei70nUfZCy-BKx5TC-ArXU&callback=initMap"></script>
     <header id="header"></header>
     <div class="content">
       <table id="event_info">
@@ -34,7 +22,6 @@
           <td>Info: </td> <td id="post_info"></td>
         </tr>
       </table>
-
       <section id="map"></section>
     </div>
     <footer id="footer"></footer>
