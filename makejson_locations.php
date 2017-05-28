@@ -7,7 +7,7 @@ $mysqli = new mysqli(getenv("DB_URL"),getenv("DB_USER"), getenv("DB_PASS"), "her
 if ($mysqli->connect_errno) {
   $messages = array(
     array(
-      "message" => "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error,
+      "messages" => "Failed to connect to MySQL",
       "email_address" => "innar.hallik@gmail.com")
   );
     mysqli_close($mysqli);
